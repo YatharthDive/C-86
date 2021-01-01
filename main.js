@@ -32,7 +32,109 @@ function new_image(get_image) {
     });
 }
 window.addEventListener("keydown", my_keydown);
-function my_keydown(e){
-    keypressed=e.keyCode;
+function my_keydown(e) {
+    keypressed = e.keyCode;
     console.log(keypressed);
+    if (e.shiftKey == true && keypressed == "80") {
+        console.log("p and shift pressed together");
+        block_image_width = block_image_width + 10;
+        block_image_height = block_image_height + 10;
+        document.getElementById("current_width").innerHTML = block_image_width;
+        document.getElementById("current_height").innerHTML = block_image_height;
+    }
+    if (e.shiftKey == true && keypressed == "77") {
+        console.log("m and shift pressed together");
+        block_image_width = block_image_width - 10;
+        block_image_height = block_image_height - 10;
+        document.getElementById("current_width").innerHTML = block_image_width;
+        document.getElementById("current_height").innerHTML = block_image_height;
+    }
+    if (keypressed == '38') {
+        up();
+        console.log("up");
+    }
+    if (keypressed == '40') {
+        down();
+        console.log("down");
+    }
+    if (keypressed == '37') {
+        left();
+        console.log("left");
+    }
+    if (keypressed == '39') {
+        right();
+        console.log("right");
+    }
+    if (keypressed == '65') {
+        new_image('hulk_face.png');
+        console.log("a");
+    }
+    if (keypressed == '66') {
+        new_image('hulk_left_hand.png');
+        console.log("b");
+    }
+    if (keypressed == '67') {
+        new_image('hulk_legs.png');
+        console.log("c");
+    }
+    if (keypressed == '68') {
+        new_image('hulk_right_hand.png');
+        console.log("d");
+    }
+    if (keypressed == '82') {
+        new_image('ironman_face.png');
+        console.log("e");
+    }
+    if (keypressed == '89') {
+        new_image('ironman_body.png');
+        console.log("f");
+    }
+    if (keypressed == '68') {
+        new_image('ironman_left_hand.png');
+        console.log("g");
+    }
+    if (keypressed == '85') {
+        new_image('ironman_right_hand.png');
+        console.log("h");
+    }
+    if (keypressed == '67') {
+        new_image('thor_face.png');
+        console.log("i");
+    }
+}
+function up(){
+    if(player_y >=0){
+        player_y =player_y-block_image_height;
+        console.log("block image height ="+block_image_height);
+        console.log("when up arrow is preesed x="+player_x+", y="+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function down(){
+    if(player_y <=500){
+        player_y =player_y+block_image_height;
+        console.log("block image height ="+block_image_height);
+        console.log("when down arrow is preesed x="+player_x+", y="+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function left(){
+    if(player_x >0){
+        player_x =player_x-block_image_width;
+        console.log("block image width ="+block_image_width);
+        console.log("when left arrow is preesed x="+player_x+", y="+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function right(){
+    if(player_x <=900){
+        player_x =player_x+block_image_width;
+        console.log("block image width ="+block_image_width);
+        console.log("when left arrow is preesed x="+player_x+", y="+player_y);
+        canvas.remove(player_object);
+        player_update();
+    }
 }
